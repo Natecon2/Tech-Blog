@@ -24,7 +24,7 @@ const postController = {
 
   createPost: async (req, res) => {
     try {
-      // Retrieve data from request body (e.g., title, content, user_id)
+      // Retrieve data from request body
       const { title, content, user_id } = req.body;
 
       // Create a new post
@@ -43,7 +43,7 @@ const postController = {
 
   updatePost: async (req, res) => {
     try {
-      // Retrieve data from request body (e.g., title, content)
+      // Retrieve data from request body
       const { title, content } = req.body;
 
       // Get post ID from request parameters
