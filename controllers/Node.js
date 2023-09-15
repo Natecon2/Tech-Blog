@@ -3,7 +3,7 @@ const commentController = require('../controllers/commentController');
 const postController = require('../controllers/postController');
 const userController = require('../controllers/userController');
 
-// Define your routes here
+// Define routes
 router.get('/comments', commentController.getAllComments);
 router.post('/comments', commentController.createComment);
 router.put('/comments/:commentId', commentController.updateComment);

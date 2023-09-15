@@ -24,7 +24,7 @@ const commentController = {
 
   createComment: async (req, res) => {
     try {
-      // Retrieve data from request body (e.g., content, user_id, post_id)
+      // Retrieve data from request body
       const { content, user_id, post_id } = req.body;
 
       // Create a new comment
@@ -43,7 +43,7 @@ const commentController = {
 
   updateComment: async (req, res) => {
     try {
-      // Retrieve data from request body (e.g., content)
+      // Retrieve data from request body
       const { content } = req.body;
 
       // Get comment ID from request parameters
