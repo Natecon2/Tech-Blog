@@ -22,7 +22,60 @@ const postController = {
     }
   },
 
-  // Add route handlers for creating, updating, and deleting posts here
+  createPost: async (req, res) => {
+    try {
+      // Retrieve data from request body (e.g., title, content, user_id)
+      const { title, content, user_id } = req.body;
+
+      // Create a new post
+      const newPost = await Post.create({
+        title,
+        content,
+        user_id,
+      });
+
+      res.json(newPost);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  },
+
+  updatePost: async (req, res) => {
+    try {
+      // Retrieve data from request body (e.g., title, content)
+      const { title, content } = req.body;
+
+      // Get post ID from request parameters
+      const { postId } = req.params;
+
+      // Find the post by ID and update its title and content
+      const updatedPost = await Post.update(
+        { title, content },
+        { where: { id: postId } }
+      );
+
+      res.json(updatedPost);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  },
+
+  deletePost: async (req, res) => {
+    try {
+      // Get post ID from request parameters
+      const { postId } = req.params;
+
+      // Delete the post by ID
+      await Post.destroy({ where: { id: postId } });
+
+      res.json({ message: 'Post deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  },
 };
 
 module.exports = postController;
